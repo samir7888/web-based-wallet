@@ -12,9 +12,6 @@ export function SolanaWallet({ mnemonic }: { mnemonic: string }) {
     import("@solana/web3.js").PublicKey[]
   >([]);
 
-  if (!mnemonic) {
-    return <div>Create seed pharse to generate wallets</div>;
-  }
   return (
     <div>
       <button
@@ -32,14 +29,18 @@ export function SolanaWallet({ mnemonic }: { mnemonic: string }) {
       </button>
       <div className=" mt-4">
         {publicKeys.map((p) => (
-          <div key={p.toBase58()}
+          <div
+            key={p.toBase58()}
             className="flex items-center mt-2.5
            gap-7 p-3 bg-gray-100 rounded-md shadow-sm hover:ring-2 hover:ring-blue-500 duration-300"
           >
             <div className="w-6 text-right text-sm font-semibold text-gray-500">
               {publicKeys.indexOf(p) + 1}.
             </div>
-            <div  onClick={() => navigate(`/sol/${p.toBase58()}`)} className="text-base font-medium text-gray-800 cursor-pointer">
+            <div
+              onClick={() => navigate(`/sol/${p.toBase58()}`)}
+              className="text-base font-medium text-gray-800 cursor-pointer"
+            >
               {p.toBase58()}
             </div>
           </div>
