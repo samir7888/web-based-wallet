@@ -39,7 +39,7 @@ export function SolanaWallet({ mnemonic }: { mnemonic: string }) {
             <div className="w-6 text-right text-sm font-semibold text-gray-500">
               {publicKeys.indexOf(p) + 1}.
             </div>
-            <div  onClick={() => navigate(`/sol/${p.toBase58()}`)} className="text-base font-medium text-gray-800">
+            <div  onClick={() => navigate(`/sol/${p.toBase58()}`)} className="text-base font-medium text-gray-800 cursor-pointer">
               {p.toBase58()}
             </div>
           </div>
