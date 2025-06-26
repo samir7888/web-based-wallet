@@ -12,7 +12,7 @@ const ShowBalance = () => {
     const fetchBalance = async () => {
       try {
         if (network === "eth") {
-          const res = await fetch("https://eth-mainnet.g.alchemy.com/v2/rD8OkCgKs4QZF0yobCk2zFr9nyHZ1mFl", {
+          const res = await fetch(`https://eth-mainnet.g.alchemy.com/v2/${import.meta.env.VITE_ALCHEMY_API_KEY}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -27,7 +27,7 @@ const ShowBalance = () => {
           const eth = Number(wei) / 1e18;
           setBalance(`${eth.toFixed(6)} ETH`);
         } else if (network === "sol") {
-          const connection = new Connection("https://solana-mainnet.g.alchemy.com/v2/rD8OkCgKs4QZF0yobCk2zFr9nyHZ1mFl");
+          const connection = new Connection(`https://solana-mainnet.g.alchemy.com/v2/${import.meta.env.VITE_ALCHEMY_API_KEY}`);
           const pubkey = new PublicKey(key);
           const lamports = await connection.getBalance(pubkey);
           const sol = lamports / 1e9;
